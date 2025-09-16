@@ -1,0 +1,62 @@
+pipeline {
+    agent any
+    
+    tools {
+        jdk 'jdk17'
+        maven 'maven'
+    }
+    
+    environment {
+        SCANNER_HOME=tool 'sonar-scanner'
+        
+    }
+
+    stages {
+        stage('Git checkout') {
+            steps {
+               git branch: 'main', url: 'https://github.com/RajaBorusu/sept16th.git'
+            }
+        }
+        
+        stage('Compile') {
+            steps {
+               sh "mvn clean compile"
+            }
+        }
+        
+         stage('Sonarqube-Analysis') {
+            steps {
+               sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.host.url=http://65.2.9.92:9000/ -Dsonar.login=squ_fc79a310d3e1c7c3b8200fefb0ce2b10618d95ed -Dsonar.projectName=shopping-cart \
+                 -Dsonar.java.binaries=. \
+                 -Dsonar.projectKey=shopping-cart'''
+            }
+        }
+        
+        
+        stage('Build Application') {
+            steps {
+               sh "mvn clean install -DskipTests=true"
+            }
+        }
+        
+        stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-creds') {
+                        def app = docker.build("rajaborusu/shopping:latest", "-f docker/Dockerfile .")
+                        app.push()
+                    }
+                }
+            }
+        }
+    
+    
+        stage('Trigger CD-Pipeline') {
+            steps {
+               build job: "CD-Pipeline", wait:true
+            }
+        }
+        
+        
+    }
+}

@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        
+        stage('Docker Deploy to container') {
+            steps {
+                script {
+                    docker.withRegistry('https://index.docker.io/v1/', 'docker-creds') {
+                     sh "docker run -d --name shopping-cart -p 8070:8070 rajaborusu/shopping:latest"
+                   }
+                    
+                }
+            }
+        }
+                
+    }
+}

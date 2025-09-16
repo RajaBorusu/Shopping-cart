@@ -1,4 +1,4 @@
-🛒 Shopping Cart Application – DevOps CI/CD Pipeline
+🛒 Shopping Cart Application — DevOps CI/CD Pipeline
 
 This project demonstrates how to set up an end-to-end CI/CD pipeline for a sample Java-based Shopping Cart web application.
 
@@ -7,7 +7,10 @@ My contribution is focused on building the DevOps workflow – installing and co
 
 📌 Project Workflow
 
-Code → GitHub → Jenkins CI Pipeline → SonarQube → Maven Build → Docker Image Build & Push → Jenkins CD Pipeline → Deployment
+Code → GitHub → Jenkins (CI) → SonarQube → Maven Build → Docker Image Build & Push → Jenkins (CD) → Deployment
+
+
+(replace pipeline-diagram.png with your actual diagram file name)
 
 ⚙️ Tools & Technologies Used
 
@@ -34,7 +37,7 @@ Connect via SSH.
 
 2️⃣ Install Jenkins
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum upgrade -y
 sudo dnf install java-17-amazon-corretto -y
@@ -62,14 +65,14 @@ Open in browser: http://<EC2-Public-IP>:9000
 
 Default credentials:
 
-username: admin
+Username: admin
 
-password: admin (you’ll be prompted to update)
+Password: admin (you’ll be prompted to update)
 
-Generate a SonarQube token from:
-Administration → Security → Users → Update Tokens → Generate Token
+Generate a SonarQube token at:
+Administration → Security → Users → Generate Token
 
-Use this token in Jenkins CI pipeline configuration.
+Use this token in your Jenkins CI pipeline.
 
 6️⃣ Configure Jenkins Plugins
 
@@ -96,23 +99,16 @@ SonarQube Scanner
 Docker
 
 8️⃣ Give Jenkins Access to Docker
-
-By default, Jenkins cannot access the Docker daemon. Add Jenkins user to the Docker group:
-
 sudo usermod -aG docker jenkins
 sudo systemctl restart jenkins
-
-
-Verify:
-
 groups jenkins
 
 
-→ should list docker.
+✅ Jenkins should now be in the docker group.
 
 9️⃣ Common Fix
 
-If container already exists:
+If a container with the same name already exists:
 
 docker rm -f shopping-cart
 
@@ -145,3 +141,5 @@ Dockerizing applications and pushing to Docker Hub
 Managing Jenkins-to-Docker permissions
 
 Deploying and accessing a Java web application in containers
+
+✅ This repository highlights my DevOps implementation while using an existing open-source shopping cart app for practice.

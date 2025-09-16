@@ -1,4 +1,4 @@
-## 🛒 Shopping Cart Application – DevOps CI/CD Pipeline
+# 🛒 Shopping Cart Application – DevOps CI/CD Pipeline
 
 ## 📌 Project Overview
 **This project demonstrates how to set up an end-to-end CI/CD pipeline for a sample Java-based Shopping Cart web application.**

@@ -52,8 +52,8 @@ ________________________________________
 ## 3️⃣ Install Docker
 ~~~bash
 sudo yum install docker -y
-sudo systemctl start docker
 sudo systemctl enable docker
+sudo systemctl start docker
 ~~~
 **(Docker installed and service enabled.)**
 

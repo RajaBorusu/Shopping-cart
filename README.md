@@ -5,31 +5,31 @@
 
 **⚠️ Note: The application source code is not authored by me. It was taken from open resources for learning purposes.**
 
-**My contribution is focused on building the DevOps workflow – installing and configuring tools, setting up Jenkins pipelines, Dockerizing the application, integrating SonarQube for quality analysis, and deploying the containerized app.**
+*My contribution is focused on building the DevOps workflow – installing and configuring tools, setting up Jenkins pipelines, Dockerizing the application, integrating SonarQube for quality analysis, and deploying the containerized app.*
 
 ________________________________________
 
 ## 📌 Project Workflow
-**Code → GitHub → Jenkins CI Pipeline → SonarQube → Maven Build → Docker Image Build & Push → Jenkins CD Pipeline → Deployment**
+Code → GitHub → Jenkins CI Pipeline → SonarQube → Maven Build → Docker Image Build & Push → Jenkins CD Pipeline → Deployment
 
 ________________________________________
 
 ## ⚙️ Tools & Technologies Used
-- **AWS EC2 (t2.medium)**  
-- **Jenkins – CI/CD automation**  
-- **Maven – Build tool**  
-- **Git – Source code management**  
-- **SonarQube – Code quality & static analysis**  
-- **Docker – Containerization & deployment**  
-- **Docker Hub – Container registry**
+- AWS EC2 (t2.medium)
+- Jenkins – CI/CD automation
+- Maven – Build tool
+- Git – Source code management 
+- SonarQube – Code quality & static analysis
+- Docker – Containerization & deployment
+- Docker Hub – Container registry
 
 ________________________________________
 
 ## 🚀 Setup Instructions
 
 ## 1️⃣ Launch EC2 Instance
-- **Launch a t2.medium EC2 instance (Amazon Linux 2).**  
-- **Connect via SSH.**
+- Launch a t2.medium EC2 instance (Amazon Linux 2). 
+- Connect via SSH.
 
 ________________________________________
 
@@ -76,28 +76,27 @@ docker run -d -p 9000:9000 sonarqube:lts-community
   - **username:** `admin`  
   - **password:** `admin` (you’ll be prompted to update)  
 - **Generate a SonarQube token from:**  
-  **Administration → Security → Users → Update Tokens → Generate Token**
-
-**Use this token in Jenkins CI pipeline configuration.**
+    Administration → Security → Users → Update Tokens → Generate Token
+    Use this token in Jenkins CI pipeline configuration.
 
 ________________________________________
 
 ## 6️⃣ Configure Jenkins Plugins
-**Install the following plugins:**  
-- **OpenJDK / Eclipse Temurin Installer**  
-- **SonarQube Scanner for Jenkins**  
-- **Docker Pipeline**  
-- **Docker Build Step**  
-- **CloudBees Docker Build and Publish**
+ *Install the following plugins:* 
+- OpenJDK / Eclipse Temurin Installer
+- SonarQube Scanner for Jenkins
+- Docker Pipeline  
+- Docker Build Step
+- CloudBees Docker Build and Publish
 
 ________________________________________
 
 ## 7️⃣ Configure Jenkins Global Tools
-**Configure these global tools in Jenkins:**  
-- **JDK**  
-- **Maven**  
-- **SonarQube Scanner**  
-- **Docker**
+ *Configure these global tools in Jenkins:*
+- JDK
+- Maven  
+- SonarQube Scanner
+- Docker
 
 ________________________________________
 
@@ -129,18 +128,18 @@ ________________________________________
 **URL:** `http://<EC2-Public-IP>:8070/home`
 
 - **Admin Login**  
-  - **Username:** `admin`  
-  - **Password:** `admin`
+  - Username: `admin`  
+  - Password: `admin`
 
 - **User Login**  
-  - **Username:** `user`  
-  - **Password:** `password`
+  - Username: `user`  
+  - Password: `password`
 
 ________________________________________
 
 ## 📖 Key Learnings
-- **Setting up Jenkins and integrating with GitHub**  
-- **Using SonarQube for code quality analysis**  
-- **Dockerizing applications and pushing to Docker Hub**  
-- **Managing Jenkins-to-Docker permissions**  
-- **Deploying and accessing a Java web application in containers**
+- Setting up Jenkins and integrating with GitHub 
+- Using SonarQube for code quality analysis 
+- Dockerizing applications and pushing to Docker Hub
+- Managing Jenkins-to-Docker permissions
+- Deploying and accessing a Java web application in containers
